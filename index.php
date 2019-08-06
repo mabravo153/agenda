@@ -36,5 +36,35 @@
 </section>
 
 
+<section class=" seccion">
+
+<div class="blanco contenedor">
+
+        <h2 class="centrar-texto texto-contenedor">Contactos</h2>
+
+        <input type="text" name="buscar" id="buscar" class="buscador centrar-texto" placeholder="Buscador de contactos">
+
+        <h2 class="centrar-texto "><span>1</span> Contactos</h2>
+
+        <div class="contenedor-indicadores contenedor">
+
+            <p class="indicador" id="nombreResultado">Nombre</p>
+            <p class="indicador" id="empresaResultado">Empresa</p>
+            <p class="indicador" id="telefonoResultado">Telefono</p>
+            <p class="indicador" id="accioneesResultado">acciones</p>
+
+        </div>
+        <div class="contenedor-resultado contenedor">
+
+            <p class="resultado" > miguel angel </p>
+            <p class="resultado"> compuhipermegared </p>
+            <p class="resultado"> 3163070334 </p>
+            <p class="resultado"> <i class="fas fa-edit"></i> <i class="fas fa-trash-alt"></i> </p>
+            
+        </div>
+        
+    </div>
+</section>
+
 
 <?php include_once 'php/template/footer.php'?>

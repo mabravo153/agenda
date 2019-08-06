@@ -37,7 +37,7 @@ body{
 }    
 
 .seccion{
-    margin-bottom: 3-rem;
+    margin-bottom: 3rem;
     margin-top: 3rem;
 }
 
@@ -200,4 +200,29 @@ p{
  .campo-contacto input{
     font-size: 1.2vw;
  }
+}
+
+
+/* contenedor contactos */
+
+.blanco{
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+
+
+.contenedor-indicadores{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    background-color: var(--primario);
+    color: white;
+}
+
+.contenedor-resultado{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
 }
