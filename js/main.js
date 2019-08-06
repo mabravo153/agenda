@@ -4,7 +4,7 @@
     'use estrict'; 
     document.addEventListener('DOMContentLoaded', function () {
     
-        console.log('prueba');
+        console.log(document.documentElement.clientWidth);
         
 
     });

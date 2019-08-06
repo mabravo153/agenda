@@ -1,5 +1,9 @@
 :root{
     --colorprimario: #c21858;
+    --colorsecundario: #ffc107; 
+    --primario: rgb(156,10,69);
+    --fuenteprincipal: 'Source Sans Pro', sans-serif;
+    --fuentesecundaria: 'Poppins', sans-serif;
 }
 
 
@@ -25,99 +29,175 @@ body{
     margin: 0 auto;
 }
 
-h1{
-    font-size: 4vh;
-    margin: 0
-}
-
-h2{
-    font-size: 4.5vh;
-    margin: 0
-}
-
-p{
-    font-size: 1.8rem;
-}
-
-.btn{
-    display: block;
-}
-
 @media (min-width: 768px){
 
-    h1{
-        font-size: 5vh;
-        margin: 0
+    .contenedor{
+        width: 95%;
     }
-
-    
-    h2{
-        font-size: 7vh;
-        margin: 0
-    }
-
-    .btn{
-        display: inline;
-        padding: 1rem 3rem; 
-    }
-}
-
-
+}    
 
 .seccion{
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-}
-
-@media (min-width: 768px){
-
-.contenedor{
-    width: 95%;
-}
-
+    margin-bottom: 3-rem;
+    margin-top: 3rem;
 }
 
 .centrar-texto{
     text-align: center;
 }
 
+
+h1{
+    font-size: 3rem;
+    margin: 0;
+    font-family: var(--fuenteprincipal)
+}
+
+h2{
+    font-size: 3.5rem;
+    margin: 0;
+    font-family: var(--fuentesecundaria)
+}
+
+p{
+    font-size: 1.8rem;
+    font-family: var(--fuentesecundaria)
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    h1{
+        font-size: 3rem;
+        margin: 0;
+        
+    }
+
+    
+    h2{
+        font-size: 3.6rem;
+        margin: 0;
+        
+    }
+
+    .btn-enviar{
+        display: inline-block;
+        margin: 0;
+        grid-column: 3/4;
+        text-align: end;
+    }
+
+}
+
+@media (min-width: 1025px){
+
+    h1{
+        font-size: 5vh;
+        margin: 0;
+        
+    }
+
+    h2{
+        font-size: 7vh;
+        margin: 0;
+        
+    }
+
+    .btn-enviar{
+        display: inline-block;
+        margin: 0;
+        grid-column: 3/4;
+        text-align: end;
+    }
+
+}
+
+
+/*contenedor del boton*/
+.btn-enviar{
+    display: block;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.btn{
+    padding: 1rem 8rem;
+    border: none;
+    color: white; 
+    font-size: 1.5rem;
+    font-family: var(--fuentesecundaria)
+}
+
+.btn-contacto{
+    background-color: var(--colorprimario);
+    transition: all 0.2s ease-in-out;
+}
+/* es recomendable poner la transccion no el el hover*/
+
+.btn-contacto:hover{
+    background-color: var(--primario);
+}
+
+
 /* AGENDA */
 
-.formulario-contacto{
-    margin: 5rem 0
+.amarillo{
+    background-color: var(--colorsecundario);
+    padding: 2rem;
+    border-radius: 1rem;
 }
+
 
 .contenedor-barra{
     text-align: center; 
     padding: 2rem 0;
+    background-color: var(--primario);
+    color: white
 }
 
 .campo-contacto{
     display: grid;
-    grid-template-rows: repeat(2,1fr);
-    grid-gap: 0.5rem;
+    grid-template-rows: 30% 70%;
+    grid-row-gap: 0.5rem;
+    padding-top: 2rem
 }
 
 .campo-contacto label{
-    padding-top: 2rem;
-    font-size: 1.6rem
+    text-align: start;
+    font-family: var(--fuentesecundaria);
+    font-size: 1.2rem;
 }
 
-.contenedor-input{
-    display: grid;
-    text-align: center;
+.campo-contacto input{
+    border-radius: 0.5rem;
+    border: none;
+    font-family: var(--fuentesecundaria);
+    padding: 1rem;
+    font-size: 3vw;
+    height: 4rem;
 }
 
-@media (min-width: 768px){
 
-    .contenedor-input{
+@media (min-width: 768px) and (max-width: 1024px){
+  
+    .campo-contacto input{
+        font-size: 1.3vw;
+    }
+    .formulario-contacto{
+        display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2,1fr);
-        grid-gap: 2rem;
-    }
+        grid-column-gap: 2rem;
+     }
+    
+  }
 
-    .btn-enviar{
-        grid-column: 3/4
-    }
+@media (min-width: 1025px){
 
+ .formulario-contacto{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem;
+ }
+    
+ .campo-contacto input{
+    font-size: 1.2vw;
+ }
 }
