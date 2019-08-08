@@ -2,6 +2,7 @@
     --colorprimario: #c21858;
     --colorsecundario: #ffc107; 
     --primario: rgb(156,10,69);
+    --colorterceario: #a5a3a3;
     --fuenteprincipal: 'Source Sans Pro', sans-serif;
     --fuentesecundaria: 'Poppins', sans-serif;
 }
@@ -22,6 +23,14 @@ body{
 }
 
 /* GLOBALES */
+
+
+.sombra{
+    -webkit-box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.75);
+}
+
 
 .contenedor{
     width: 95%;
@@ -58,6 +67,13 @@ h2{
     font-family: var(--fuentesecundaria)
 }
 
+h3{
+ font-size: 3rem;
+ margin: 0;
+ padding: 2rem 0;
+ font-family: var(--fuentesecundaria)
+}
+
 p{
     font-size: 1.8rem;
     font-family: var(--fuentesecundaria)
@@ -78,14 +94,19 @@ p{
         
     }
 
+    h3{
+        font-size: 3rem;
+    }
+
     .btn-enviar{
         display: inline-block;
         margin: 0;
-        grid-column: 3/4;
+        grid-column: 4/5;
         text-align: end;
     }
 
 }
+
 
 @media (min-width: 1025px){
 
@@ -101,10 +122,15 @@ p{
         
     }
 
+    h3{
+        font-size: 3rem;
+    }
+       
+
     .btn-enviar{
         display: inline-block;
         margin: 0;
-        grid-column: 3/4;
+        grid-column: 4/5;
         text-align: end;
     }
 
@@ -119,11 +145,12 @@ p{
 }
 
 .btn{
-    padding: 1rem 8rem;
+    padding: 1rem 6rem;
     border: none;
     color: white; 
     font-size: 1.5rem;
-    font-family: var(--fuentesecundaria)
+    font-family: var(--fuentesecundaria);
+    text-decoration: none;
 }
 
 .btn-contacto{
@@ -183,7 +210,7 @@ p{
     }
     .formulario-contacto{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         grid-column-gap: 2rem;
      }
     
@@ -193,7 +220,7 @@ p{
 
  .formulario-contacto{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 2rem;
  }
     
@@ -211,18 +238,74 @@ p{
     padding: 2rem;
 }
 
+.texto-contenedor{
+    color: var(--primario)
+}
 
+.contenedor-blanco{
+    max-width: 80rem;
+    margin: 4rem auto 0 auto;
+}
+
+.buscador{
+    width: 100%;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-family: var(--fuentesecundaria); 
+    border-radius: 1rem;
+    border:none;
+}
+
+.indicador{
+    text-transform: uppercase;
+}
+
+.editar{
+    font-size: 2rem;
+    color: var(--colorsecundario)
+}
+
+.borrar{
+    font-size: 2rem;
+    color: var(--colorterceario)
+}
+
+/*esto nos ayuda a poder hacer scroll cuando el contenido esta en un movil, he notado que solo se le aplica los estilos como color a la parte visible  */ 
+.scroll{
+    overflow: scroll; 
+}
 
 .contenedor-indicadores{
+    color: var(--primario);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, minmax(17rem, 1fr));
+    grid-column-gap: 2rem;
     text-align: center;
-    background-color: var(--primario);
-    color: white;
+   
 }
 
 .contenedor-resultado{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, minmax(17rem, 1fr));  /* de esta manera hacmeos que el contenedor tome un valor minumo y maximo*/ 
+    grid-column-gap: 2rem;
     text-align: center;
 }
+
+
+/*EDITAR*/
+
+.contenedor-editar{
+   display: grid;
+   grid-template-columns: repeat(3,1fr); 
+   align-items: center;
+}
+
+.btn-volver{
+    display:inline;
+}
+
+.btn-editar{
+    background-color: var(--colorsecundario);
+    color: var(--primario)
+}
+
