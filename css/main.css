@@ -76,7 +76,8 @@ h3{
 
 p{
     font-size: 1.8rem;
-    font-family: var(--fuentesecundaria)
+    font-family: var(--fuentesecundaria);
+    margin: 0
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -173,13 +174,67 @@ p{
 }
 
 
+/* alerta */
+
+.notificacion{
+    opacity: 0; 
+    transition: all .2s ease-in-out;
+    border: solid .1rem var(--colorterceario);
+    font-family: var(--fuentesecundaria);
+    color: white;
+}
+
+.notificacion p{
+    padding: 1rem 3rem;
+}
+
+.visible{
+    opacity: 1;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+@media (min-width: 1025px){
+
+}
+
+/*barra superior*/
+
 .contenedor-barra{
     text-align: center; 
     padding: 2rem 0;
     background-color: var(--primario);
-    color: white
+    color: white;
+    display: grid;
+    grid-gap: 2rem;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+    .contenedor-barra{
+        grid-template-columns: repeat(3,1fr);
+        align-items: center;
+    }
+
+    .contenedor-encabezado {
+        grid-column: 2/3;
+    }
+
+    
+}
+
+@media (min-width: 1025px){
+    .contenedor-barra{
+        grid-template-columns: repeat(3,1fr);
+        align-items: center;
+    }
+
+    .contenedor-encabezado {
+        grid-column: 2/3;
+    }
+
+}
 .campo-contacto{
     display: grid;
     grid-template-rows: 30% 70%;
@@ -202,31 +257,65 @@ p{
     height: 4rem;
 }
 
+/*css contacto */ 
 
-@media (min-width: 768px) and (max-width: 1024px){
-  
-    .campo-contacto input{
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .campo-contacto input {
         font-size: 1.3vw;
     }
-    .formulario-contacto{
+
+    .formulario-contacto {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-column-gap: 2rem;
-     }
-    
-  }
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 2rem;
+    }
 
-@media (min-width: 1025px){
+    #empresa {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
 
- .formulario-contacto{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 2rem;
- }
-    
- .campo-contacto input{
-    font-size: 1.2vw;
- }
+    #telefono {
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+
+    #enviar{
+        grid-column: -2/-1;
+        grid-row: 3/4;
+    }
+
+}
+
+@media (min-width: 1025px) {
+
+    .formulario-contacto {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 2rem;
+    }
+
+    .campo-contacto input {
+        font-size: 1.2vw;
+    }
+
+    #empresa {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    #telefono {
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+
+    #enviar{
+        grid-column: -2/-1;
+        grid-row: 3/4;
+    }
 }
 
 
@@ -296,12 +385,38 @@ p{
 
 .contenedor-editar{
    display: grid;
-   grid-template-columns: repeat(3,1fr); 
-   align-items: center;
+   
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .contenedor-editar {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+    }
+}
+
+@media (min-width: 1025px){
+    .contenedor-editar {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+    }
 }
 
 .btn-volver{
     display:inline;
+    padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .btn-volver{
+        padding-bottom: 0rem;
+    }
+}
+
+@media (min-width: 1025px){
+    .btn-volver{
+        padding-bottom: 0rem;
+    }
 }
 
 .btn-editar{

@@ -1792,6 +1792,10 @@ options
         passive : si es true , entonces el controlador no evitará el preventDefault() , lo cubriremos más adelante en las acciones predeterminadas del navegador . 
 
 
+        preventDefault() es una funcion que como su nombre lo dice. la podemos usar para evitar que se haga algo por efecto. por ejemplo, enviar la informacion de un formulario 
+        la sintaxis es muy sencilla. al hacer el addEventListener. la funcion que le agregamos. le pasamos como parametro el evento. siempre es recomendable 
+        hacer esta accion cuando vayas a usar js o ajax 
+
 Para eliminar el controlador, use removeEventListener :
 
 element.removeEventListener(event, handler[, options]); 

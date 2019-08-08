@@ -1,9 +1,14 @@
 <?php include_once 'php/template/header.php'?>
 
 <div class="contenedor-barra">
-    <div class="contenedor">
+    <div class="contenedor-encabezado contenedor">
         <h1>Agenda de Contactos</h1>
     </div>
+
+    <div class="notificacion contenedor" id="notificacion">
+        <p>Ingresa todos los datos</p>
+    </div>
+
 </div>
 
 <section class="seccion">
