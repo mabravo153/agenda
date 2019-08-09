@@ -3256,12 +3256,14 @@ podemos usar un strlen para verificar que no sea una variable vacia, y tambien i
 
 
 
-AÑADIRLE SEGURIDAD AL FORMULARIO. 
+AÑADIRLE SEGURIDAD AL FORMULARIO.
+
+adicional a eso debemos usar una funcion llamada filter_var 
 poemos agergarle filtros adicnales como habiamos escrito anteriormente, los podemos encontrsar en este link  
 https://www.php.net/manual/es/filter.filters.php  es recomendable usar filtros de sanidad para evitar que codigo infeccioso se ejecute en nuestro formulario
 
 
-
+SIEMPRE, ANTES DE INSERTR REGISTROS A LA BASE DE DATOS ES NECESARIO AÑADIRLES LA SEGUIDAD CON LOS FILTROS
 
 
 

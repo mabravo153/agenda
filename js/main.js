@@ -33,6 +33,7 @@
                 informacion.append('nombre', nombre);
                 informacion.append('empresaNombre', empresaNombre);
                 informacion.append('telefonoEmpresa', telefonoEmpresa);
+                informacion.append('accion', accion)
 
 
                 if (accion === "crear") {
