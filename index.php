@@ -1,4 +1,4 @@
-<?php include_once 'php/template/header.php'?>
+<?php include_once 'php/vista/header.php'?>
 
 <div class="contenedor-barra">
     <div class="contenedor-encabezado contenedor">
@@ -6,7 +6,7 @@
     </div>
 
     <div class="notificacion contenedor" id="notificacion">
-        <p>Ingresa todos los datos</p>
+        
     </div>
 
 </div>
@@ -17,7 +17,7 @@
     <h2 class="centrar-texto ">Añada un contacto</h2>
     <p class="centrar-texto ">Todos los campos son obligatorios</p>
 
-   <?php include_once 'php/template/formulario.php' ?>
+   <?php include_once 'php/vista/formulario.php' ?>
     
 </div>
 </section>
@@ -62,4 +62,4 @@
 </section>
 
 
-<?php include_once 'php/template/footer.php'?>
+<?php include_once 'php/vista/footer.php'?>

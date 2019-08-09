@@ -18,5 +18,6 @@
 </div>
 <div class="btn-enviar" id="enviar">
     <input type="submit" value="Enviar" id="enviarBoton" class="btn btn-contacto">
+    <input type="hidden" value="crear" id="accion">
 </div>
 </form>

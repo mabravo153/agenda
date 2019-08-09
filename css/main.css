@@ -2,6 +2,8 @@
     --colorprimario: #c21858;
     --colorsecundario: #ffc107; 
     --primario: rgb(156,10,69);
+    --correcto:  #11ec19;
+    --error: red;
     --colorterceario: #a5a3a3;
     --fuenteprincipal: 'Source Sans Pro', sans-serif;
     --fuentesecundaria: 'Poppins', sans-serif;
@@ -181,12 +183,20 @@ p{
     transition: all .2s ease-in-out;
     border: solid .1rem var(--colorterceario);
     font-family: var(--fuentesecundaria);
-    color: white;
 }
 
 .notificacion p{
     padding: 1rem 3rem;
 }
+
+.correcto{
+    color: var(--correcto)
+}
+
+.error{
+    color: var(--error)
+}
+
 
 .visible{
     opacity: 1;
@@ -378,49 +388,46 @@ p{
     grid-template-columns: repeat(5, minmax(17rem, 1fr));  /* de esta manera hacmeos que el contenedor tome un valor minumo y maximo*/ 
     grid-column-gap: 2rem;
     text-align: center;
+    margin-top: 2rem;
 }
 
 
 /*EDITAR*/
 
-.contenedor-editar{
-   display: grid;
-   
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    .contenedor-editar {
-        grid-template-columns: repeat(3, 1fr);
-        align-items: center;
-    }
-}
-
-@media (min-width: 1025px){
-    .contenedor-editar {
-        grid-template-columns: repeat(3, 1fr);
-        align-items: center;
-    }
-}
 
 .btn-volver{
     display:inline;
     padding-bottom: 2rem;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-    .btn-volver{
-        padding-bottom: 0rem;
-    }
-}
-
-@media (min-width: 1025px){
-    .btn-volver{
-        padding-bottom: 0rem;
-    }
-}
-
 .btn-editar{
     background-color: var(--colorsecundario);
     color: var(--primario)
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    
+
+    .encabezado-editar{
+        grid-column: 2/3
+    }
+
+    .btn-volver{
+        padding-bottom: 0rem;
+        grid-column: 1/2
+    }
+}
+
+@media (min-width: 1025px){
+   
+    #encabezado-editar{
+        grid-column: 2/3
+    }
+
+    .btn-volver{
+        padding-bottom: 0rem;
+        grid-column: 1/2
+    }
+}
+
 

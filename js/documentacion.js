@@ -1572,7 +1572,7 @@ para saber el ancho de la pagina usaos document.documentElement.clientWidth
 pdemos mover el scroll con document.documentElement.scrollTop pero algunos navegadores como 
 como safari pueden arrojar un error
 
-para evitar eso debemos usar window.pageXOffset O window.pageYOffset
+para evitar eso debemos usar window.XOffset O window.pageYOffset
 
 
 DESPLAZAMIENTO DE LA PAGINA 
