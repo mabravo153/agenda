@@ -1404,6 +1404,15 @@ A saber:
     Propiedades simbólicas.
     Propiedades que almacenan undefined . 
 
+
+
+   
+  LEER INFORMACION DE FOMULARIOS 
+  
+  podemo usar un objeto de js llamado formData
+  debemos crear una instancia del mismo. luego de eso podemos usar sus metodos. 
+  el metodo para agregar informacion al formData() usamos append() este recibe dos parametros el nombre es algo similar a una llave. y el siguiente 
+  parametro es el valor  
 */ 
 
 

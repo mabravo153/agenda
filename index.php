@@ -59,7 +59,7 @@
                     foreach ($imprimir as $key => $value) { ?>
 
                         <div class="campo-result">
-                            <p class="resultado"> <a href="editar.php?id=${respuesta.info.idEmpresa}" class="editar"><i class="fas fa-edit"></i></a> <a href="#" class="borrar"><i class="fas fa-trash-alt"></i></a> </p>
+                            <p class="resultado"> <a href="editar.php?id=<?php echo $value['idEmpresa'] ?>" class="editar"><i class="fas fa-edit"></i></a> <a href="#" class="borrar" data-id="<?php echo $value['idEmpresa'] ?>"><i class="fas fa-trash-alt"></i></a> </p>
                         </div>
                         <div class="campo-result">
                             <p><?php echo $value['idEmpresa'] ?></p>

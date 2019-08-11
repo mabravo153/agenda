@@ -4,6 +4,18 @@
     'use estrict';
     document.addEventListener('DOMContentLoaded', function () {
 
+
+        //variables globales 
+
+        let idEmpresa = document.querySelector('#idEmpresa').value,
+                nombre = document.querySelector('#nombre').value,
+                empresaNombre = document.querySelector('#empresaNombre').value,
+                telefonoEmpresa = document.querySelector('#telefonoEmpresa').value,
+                accion = document.querySelector('#accion').value,
+                notificacion = document.querySelector('#notificacion'),
+                contenedorScroll = document.querySelector('.scroll');
+
+
         //validar formulario 
 
         let formulario = document.querySelector('#formulario');
@@ -13,15 +25,7 @@
         function validarFormulario(e) {
             e.preventDefault();
 
-            let idEmpresa = document.querySelector('#idEmpresa').value,
-                nombre = document.querySelector('#nombre').value,
-                empresaNombre = document.querySelector('#empresaNombre').value,
-                telefonoEmpresa = document.querySelector('#telefonoEmpresa').value,
-                accion = document.querySelector('#accion').value,
-                notificacion = document.querySelector('#notificacion'),
-                contenedorScroll = document.querySelector('.scroll')
-
-
+            
             //validar que el elemento no este vacio
             if (idEmpresa === "" || nombre === "" || empresaNombre === "" || telefonoEmpresa === "") {
                 mostrarNotificacion(`<p>Ingresa todos los datos </p>`, 'error')
@@ -35,6 +39,7 @@
                 informacion.append('empresaNombre', empresaNombre);
                 informacion.append('telefonoEmpresa', telefonoEmpresa);
                 informacion.append('accion', accion)
+                
 
 
                 if (accion === "crear") {
@@ -58,7 +63,7 @@
 
                         contenedorResultado.innerHTML = `
                         <div class="campo-result">
-                            <p class="resultado"> <a href="editar.php?id=${respuesta.info.idEmpresa}" class="editar"><i class="fas fa-edit"></i></a> <a href="#" class="borrar"><i class="fas fa-trash-alt"></i></a> </p>
+                            <p class="resultado"> <a href="editar.php?id=${respuesta.info.idEmpresa}" class="editar"><i class="fas fa-edit"></i></a> <a href="#" class="borrar" data-id="${respuesta.info.idEmpresa}"><i class="fas fa-trash-alt"></i></a> </p>
                         </div>
                         <div class="campo-result">
                             <p>${respuesta.info.idEmpresa}</p>
@@ -107,7 +112,50 @@
 
         }
 
+        //eliminar registro 
 
+      if(document.querySelector('.borrar')){
+            let eliminar = document.querySelectorAll('.borrar');
+            
+            eliminar.forEach(element => {
+
+                element.addEventListener('click', borrarElement);
+
+            })
+
+
+            function borrarElement(e) {
+                e.preventDefault();
+                
+                let idData =  this.getAttribute('data-id');
+                
+                let confirmar = confirm('Estas seguro?');
+
+                if (confirmar == true) {
+                    
+                    let enviarId = new XMLHttpRequest();
+
+                    enviarId.open('GET', `php/modelo/encode.php?id=${idData}&accion=borrar`, true);
+    
+                    enviarId.onload = function() {
+                        
+                        if (enviarId.status == 200) {
+                            
+                            let json = JSON.parse(enviarId.responseText);
+    
+                            console.log(json);
+                            
+    
+                        }
+    
+                    }
+                } 
+
+            }
+
+
+        }
+        
 
 
 

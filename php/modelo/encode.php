@@ -1,7 +1,7 @@
 <?php 
 
 
-//de esta manera capturamos la accion que queremos realizar y ejecutamos el codigo segun lo quererimos
+//de esta manera capturamos la accion que queremos realizar y ejecutamos el codigo segun lo queremos
 if ($_POST['accion'] == 'crear') { 
 
     $idEmpresa = filter_var($_POST['idEmpresa'], FILTER_SANITIZE_STRING);
@@ -50,6 +50,14 @@ if ($_POST['accion'] == 'crear') {
     echo json_encode($respuesta);
 }
 
+
+
+var_dump($_GET);
+
+
+if($_GET['accion'] == "borrar"){
+    echo json_encode($_GET);
+}
 
 
 
