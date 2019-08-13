@@ -48,8 +48,6 @@
 
                 </div>
 
-                <div class="contenedor-resultado">
-
                     <?php
 
                     include_once 'php/modelo/consulta.php';
@@ -57,6 +55,8 @@
                     $imprimir = mostrarResultados();
 
                     foreach ($imprimir as $key => $value) { ?>
+
+                        <div class="contenedor-eliminar" data-id="<?php echo $value['idEmpresa']  ?>">
 
                         <div class="campo-result">
                             <p class="resultado"> <a href="editar.php?id=<?php echo $value['idEmpresa'] ?>" class="editar"><i class="fas fa-edit"></i></a> <a href="#" class="borrar" data-id="<?php echo $value['idEmpresa'] ?>"><i class="fas fa-trash-alt"></i></a> </p>
@@ -74,10 +74,10 @@
                             <p><?php echo $value['telefonoEmpresa'] ?></p>
                         </div>
 
+                        </div>
+
                     <?php  } ?>
-
-                </div>
-
+                    
             </div>
         </div>
     </div>

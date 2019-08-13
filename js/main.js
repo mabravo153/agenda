@@ -22,13 +22,18 @@
 
         formulario.addEventListener('submit', validarFormulario)
 
+        
+
         function validarFormulario(e) {
             e.preventDefault();
 
+            console.log(idEmpresa); 
             
             //validar que el elemento no este vacio
             if (idEmpresa === "" || nombre === "" || empresaNombre === "" || telefonoEmpresa === "") {
                 mostrarNotificacion(`<p>Ingresa todos los datos </p>`, 'error')
+
+
             } else {
 
                 //leer datos
@@ -41,10 +46,10 @@
                 informacion.append('accion', accion)
                 
 
-
+                //en este punto creamos el formulario. 
                 if (accion === "crear") {
                     conexiondb(informacion);
-                    mostrarNotificacion(`<p>Completaste el registro</p>`, 'correcto')
+                    mostrarNotificacion(`<p>Completaste el registro</p>`, 'correcto')//funcion para mostrar una notificacion 
                 }
 
 
@@ -59,7 +64,7 @@
 
 
                     let contenedorResultado = document.createElement('div');
-                    contenedorResultado.classList.add('contenedor-resultado');
+                    contenedorResultado.classList.add('contenedor-eliminar');
 
                         contenedorResultado.innerHTML = `
                         <div class="campo-result">
@@ -124,31 +129,50 @@
             })
 
 
-            function borrarElement(e) {
+            async function borrarElement(e) {
                 e.preventDefault();
                 
-                let idData =  this.getAttribute('data-id');
+                let idData = this.getAttribute('data-id');
                 
                 let confirmar = confirm('Estas seguro?');
 
                 if (confirmar == true) {
-                    
-                    let enviarId = new XMLHttpRequest();
+                   
+                    let xhr = new XMLHttpRequest();
 
-                    enviarId.open('GET', `php/modelo/encode.php?id=${idData}&accion=borrar`, true);
-    
-                    enviarId.onload = function() {
-                        
-                        if (enviarId.status == 200) {
+                    xhr.open('GET', `php/modelo/encode.php?id=${idData}&accion=borrar`, true);
+
+                    xhr.onload = function() {
+                        if (xhr.status == 200) {
                             
-                            let json = JSON.parse(enviarId.responseText);
-    
-                            console.log(json);
+                            console.log(xhr.responseText);
                             
-    
+
+                           // let json = JSON.parse(xhr.response);
+                           
+
+                         /*   if (condition) {
+                                
+
+
+                                mostrarNotificacion(`<p>Completaste el registro</p>`, 'correcto');
+
+                            } else {
+                                //mostramos una notificacion si algo sale mal
+
+                                mostrarNotificacion(`<p>Completaste el registro</p>`, 'error');
+                                
+                            }*/
+
+
+
+                        }else{
+                            alert(`${xhr.status} ${xhr.statusText}`)
                         }
-    
-                    }
+                    } 
+
+                    xhr.send();
+
                 } 
 
             }
