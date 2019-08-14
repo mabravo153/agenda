@@ -52,6 +52,33 @@ if (isset($_POST['accion'])) {
     
         echo json_encode($respuesta);
     }
+
+
+    if ($_POST['accion'] == 'editar' ) {
+        
+        $idEmpresa = filter_var($_POST['idEmpresa'], FILTER_SANITIZE_STRING);
+        $nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
+        $empresaNombre = filter_var($_POST['empresaNombre'], FILTER_SANITIZE_STRING);
+        $telefonoEmpresa = filter_var($_POST['telefonoEmpresa'], FILTER_SANITIZE_STRING);
+
+        try {
+            
+            include_once 'bd-con.php';
+
+            $editarRegistro = $pdo->prepare( "UPDATE empresa SET idEmpresa=:id, nombre=:nombre, empresaNombre=:empresaNombre, telefonoEmpresa=:telefonoEmpresa 
+                                            WHERE is=:idEditar" );
+            
+            $idEditar = $_GET['id'];
+
+        echo $idEditar;
+
+
+        } catch (\Exception $th) {
+            echo "Error {$th->getMessage()}";
+        }
+
+    }
+
 }
 
   
@@ -80,7 +107,7 @@ if (isset($_GET['accion'])) {
             $borrar = $pdo->prepare("DELETE FROM empresa WHERE idEmpresa=:id ");
             
             $borrar->execute([
-                'id'=>$idBorrar
+                'id'=>$idBorrar //nos ahorramos el bindParam
             ]);
 
             $pdo->commit();
@@ -88,7 +115,8 @@ if (isset($_GET['accion'])) {
 
                 $resultado = array(
 
-                    'respuesta' => 'correcto'
+                    'respuesta' => 'correcto',
+                    'id' => $idBorrar
 
                 );
 
