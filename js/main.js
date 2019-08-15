@@ -4,6 +4,7 @@
     'use estrict';
     document.addEventListener('DOMContentLoaded', function () {
 
+      
 
         //variables globales 
 
@@ -219,6 +220,49 @@
 
 
         }//final if eliminar 
+
+
+        //detecctando el scrol u poninedo estatifc al a barra 
+        window.addEventListener('scroll', function() {
+            let scrollPagina = window.pageYOffset;
+            let contenedorBarra = document.querySelector('.contenedor-barra');
+            let altoBarra = contenedorBarra.clientHeight;
+
+
+            if (scrollPagina > altoBarra ) {
+                contenedorBarra.classList.add('fixed');
+                document.body.style.marginTop = `${altoBarra}px`
+            }else{
+                contenedorBarra.classList.remove('fixed');
+                document.body.style.marginTop = '0px'
+            }
+            
+        })
+
+
+        //buscador 
+
+        //haremos la logica para habilitar un buscador
+        let buscador = document.querySelector('#buscar'); 
+
+        buscador.addEventListener('input', function(e) {
+            e.preventDefault();
+
+            let exprecionRegular = new RegExp(e.target.value);//exprecion regulñar el valir ingresado al input 
+            let campos = document.querySelectorAll('.contenedor-eliminar');//seleccionamos todos los campos que hay 
+
+            campos.forEach(element => {
+                element.style.visibility = 'hidden';
+                
+               //selecionamos el div, luego el contenedor que tiene el parrafo y accedemos a 
+                if (element.childNodes[5].childNodes[1].textContent.replace(/\s/g, " ").match(exprecionRegular)) {
+                    element.style.visibility = 'visible';
+                }
+
+                
+            })
+            
+        })
 
 
     });
