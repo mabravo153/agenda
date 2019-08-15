@@ -4,7 +4,7 @@
     'use estrict';
     document.addEventListener('DOMContentLoaded', function () {
 
-      
+
 
         //variables globales 
 
@@ -52,7 +52,7 @@
                 //con esto lo editamos
                 if (accion === "editar") {
                     editarBD(informacion);
-                 
+
                 }
 
             }
@@ -93,6 +93,8 @@
 
                     //de esta manera reseteamos el formulario, debemos hacerlo de esta manera o no funcionara 
                     document.querySelector('form').reset()
+                    //mostramos el numero luego de añadir un numero 
+                    mostrarNumero()
 
                 } else {
                     alert(`Error HTTP ${enviar.statusText}`)
@@ -103,36 +105,36 @@
            //editar contacto  
            /* async*/ function editarBD(params) {
 
-            let idAjax = document.querySelector('#idAjax').value
+                let idAjax = document.querySelector('#idAjax').value
 
-            let xhr = new XMLHttpRequest();
+                let xhr = new XMLHttpRequest();
 
-            xhr.open('POST', `php/modelo/encode.php?id=${idAjax}`, true);
+                xhr.open('POST', `php/modelo/encode.php?id=${idAjax}`, true);
 
-            xhr.onload = function() {
-                
-                if (xhr.status == 200) {
-                    
-                    let json = JSON.parse(xhr.response) //recibe la respuesta. si la respuesta es correcta ejecuta el mensaje
-                    
-                   if (json.resultado == 'correcto') {
-                    mostrarNotificacion(`<p>Se edito el contacto correctamente</p>`,'correcto'); 
-                   }else{
-                    mostrarNotificacion(`<p>Ocurrio un error </p>`,'error'); 
-                   }
-                    
-                    
-                }else{
-                    alert(`${xhr.status}: ${xhr.statusText}`)
+                xhr.onload = function () {
+
+                    if (xhr.status == 200) {
+
+                        let json = JSON.parse(xhr.response) //recibe la respuesta. si la respuesta es correcta ejecuta el mensaje
+
+                        if (json.resultado == 'correcto') {
+                            mostrarNotificacion(`<p>Se edito el contacto correctamente</p>`, 'correcto');
+                        } else {
+                            mostrarNotificacion(`<p>Ocurrio un error </p>`, 'error');
+                        }
+
+
+                    } else {
+                        alert(`${xhr.status}: ${xhr.statusText}`)
+                    }
+
                 }
 
-            }
+
+                xhr.send(params);
 
 
-            xhr.send(params);
 
-             
-            
             }
 
         }
@@ -186,7 +188,7 @@
 
                     xhr.onload = function () {
                         if (xhr.status == 200) {
-                            
+
                             let json = JSON.parse(xhr.response);
 
                             if (json.respuesta == 'correcto') {
@@ -195,6 +197,8 @@
 
                                     eliminarElement.parentElement.parentElement.parentElement.remove() //forma de ingresar al div 
 
+
+                                    mostrarNumero()//mostramos el numero cuando borramos un elemento
 
                                 }, 1000);
 
@@ -223,47 +227,70 @@
 
 
         //detecctando el scrol u poninedo estatifc al a barra 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             let scrollPagina = window.pageYOffset;
             let contenedorBarra = document.querySelector('.contenedor-barra');
             let altoBarra = contenedorBarra.clientHeight;
 
 
-            if (scrollPagina > altoBarra ) {
+            if (scrollPagina > altoBarra) {
                 contenedorBarra.classList.add('fixed');
                 document.body.style.marginTop = `${altoBarra}px`
-            }else{
+            } else {
                 contenedorBarra.classList.remove('fixed');
                 document.body.style.marginTop = '0px'
             }
-            
+
         })
 
 
         //buscador 
 
         //haremos la logica para habilitar un buscador
-        let buscador = document.querySelector('#buscar'); 
+        let buscador = document.querySelector('#buscar');
 
-        buscador.addEventListener('input', function(e) {
+        buscador.addEventListener('input', function (e) {
             e.preventDefault();
 
-            let exprecionRegular = new RegExp(e.target.value);//exprecion regulñar el valir ingresado al input 
+            let exprecionRegular = new RegExp(e.target.value, "i");//exprecion regulñar el valir ingresado al input 
             let campos = document.querySelectorAll('.contenedor-eliminar');//seleccionamos todos los campos que hay 
 
             campos.forEach(element => {
                 element.style.visibility = 'hidden';
-                
-               //selecionamos el div, luego el contenedor que tiene el parrafo y accedemos a 
+
+                //selecionamos el div, luego el contenedor que tiene el parrafo y accedemos a 
                 if (element.childNodes[5].childNodes[1].textContent.replace(/\s/g, " ").match(exprecionRegular)) {
                     element.style.visibility = 'visible';
                 }
 
-                
+                mostrarNumero() //mostramos los numeros cuando realizamos la busqueda
+
             })
-            
+
         })
 
+
+        //mostrar numeros 
+        function mostrarNumero() {
+            let campos = document.querySelectorAll('.contenedor-eliminar');
+
+            let total = 0;
+            
+            let insertarNumero = document.querySelector('#insertarNumero')
+
+            campos.forEach(element => {
+
+                if ( element.style.visibility == ''  || element.style.visibility == 'visible') {//esto verificara que elementos estan visibles o no tienen ese atributo
+                    total++;
+                }
+
+            });
+
+            insertarNumero.innerHTML = total
+
+        }
+
+        mostrarNumero()
 
     });
 })();

@@ -34,7 +34,7 @@
 
             <input type="text" name="buscar" id="buscar" class="buscador sombra" placeholder="Buscador de contactos">
 
-            <h3 class="centrar-texto texto-contenedor"><span>1</span> Contactos</h3>
+            <h3 class="centrar-texto texto-contenedor"><span id="insertarNumero"></span> Contactos</h3>
 
             <div class="scroll">
 
