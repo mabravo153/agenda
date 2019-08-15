@@ -61,22 +61,45 @@ if (isset($_POST['accion'])) {
         $empresaNombre = filter_var($_POST['empresaNombre'], FILTER_SANITIZE_STRING);
         $telefonoEmpresa = filter_var($_POST['telefonoEmpresa'], FILTER_SANITIZE_STRING);
 
+        $idEditar = filter_var($_GET['id'], FILTER_SANITIZE_STRING); 
+
         try {
             
             include_once 'bd-con.php';
 
+
+            $pdo->beginTransaction();
             $editarRegistro = $pdo->prepare( "UPDATE empresa SET idEmpresa=:id, nombre=:nombre, empresaNombre=:empresaNombre, telefonoEmpresa=:telefonoEmpresa 
-                                            WHERE is=:idEditar" );
+                                            WHERE idEmpresa=:idEditar" );
             
-            $idEditar = $_GET['id'];
+            $editarRegistro->execute([
+                'idEditar'=> $idEditar,
+                'id'=>$idEmpresa,
+                'nombre'=>$nombre,
+                'empresaNombre'=>$empresaNombre,
+                'telefonoEmpresa'=>$telefonoEmpresa               
 
-        echo $idEditar;
+            ]);
 
+           
+            $pdo->commit();
 
+            $respuestaEditar = array(
+                'resultado' => 'correcto'
+            );
+
+          
         } catch (\Exception $th) {
-            echo "Error {$th->getMessage()}";
+
+            $pdo->rollBack();
+
+            $respuestaEditar =array(
+                'error'=>$th->getMessage()
+            );
+
         }
 
+        echo json_encode($respuestaEditar);
     }
 
 }

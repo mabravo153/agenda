@@ -18,6 +18,12 @@
 </div>
 <div class="btn-enviar" id="enviar">
     <input type="submit" value="Enviar" id="enviarBoton" class="btn btn-contacto">
+
+    <?php if (isset($respuesta['idEmpresa'])) { //con esto validamos que si el id existe, cree el campo hidden y envie para tomarlo por ajax  ?> 
+        
+        <input type="hidden" value="<?php echo $respuesta['idEmpresa']?>" id="idAjax"> 
+
+   <?php } ?>
     <input type="hidden" value="<?php echo ($respuesta['idEmpresa'])? 'editar' : 'crear'?>" id="accion">
 </div>
 </form>

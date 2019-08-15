@@ -8,7 +8,7 @@
         //variables globales 
 
         let accion = document.querySelector('#accion').value,
-            notificacion = document.querySelector('#notificacion')
+            notificacion = document.querySelector('#notificacion');
 
         //validar formulario 
 
@@ -51,7 +51,7 @@
                 //con esto lo editamos
                 if (accion === "editar") {
                     editarBD(informacion);
-                    mostrarNotificacion(`<p>Se edito el contacto correctamente</p>`,'correcto');
+                 
                 }
 
             }
@@ -99,19 +99,39 @@
 
             }
 
-            
-            async function editarBD(params) {
+           //editar contacto  
+           /* async*/ function editarBD(params) {
 
-                let editarValores = await fetch(`php/modelo/encode.php?id=${respuesta.info.idEmpresa}`, { method: 'POST', body: params })
+            let idAjax = document.querySelector('#idAjax').value
 
-                if(editarValores.ok){
+            let xhr = new XMLHttpRequest();
 
+            xhr.open('POST', `php/modelo/encode.php?id=${idAjax}`, true);
+
+            xhr.onload = function() {
+                
+                if (xhr.status == 200) {
                     
-
+                    let json = JSON.parse(xhr.response) //recibe la respuesta. si la respuesta es correcta ejecuta el mensaje
+                    
+                   if (json.resultado == 'correcto') {
+                    mostrarNotificacion(`<p>Se edito el contacto correctamente</p>`,'correcto'); 
+                   }else{
+                    mostrarNotificacion(`<p>Ocurrio un error </p>`,'error'); 
+                   }
+                    
+                    
                 }else{
-                    alert(`${editarValores.status}: ${editarValores.statusText}`)
+                    alert(`${xhr.status}: ${xhr.statusText}`)
                 }
 
+            }
+
+
+            xhr.send(params);
+
+             
+            
             }
 
         }
@@ -165,16 +185,14 @@
 
                     xhr.onload = function () {
                         if (xhr.status == 200) {
-
-                            console.log(xhr.responseText);
-
+                            
                             let json = JSON.parse(xhr.response);
 
                             if (json.respuesta == 'correcto') {
 
                                 setTimeout(() => {
 
-                                    eliminarElement.parentElement.parentElement.parentElement.remove()
+                                    eliminarElement.parentElement.parentElement.parentElement.remove() //forma de ingresar al div 
 
 
                                 }, 1000);

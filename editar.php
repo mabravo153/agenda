@@ -1,7 +1,5 @@
 <?php include_once 'php/vista/header.php'; ?>
 
-<div class="contenedor-barra">  
-    
 <?php 
 
 include_once 'php/modelo/consulta.php';
@@ -16,7 +14,9 @@ if (!$id) {
 }
 
 ?>
-        
+
+<div class="contenedor-barra">  
+
        <div class="btn-volver">
             <a href="index.php" class="btn-editar btn">Volver</a>
        </div>
@@ -25,6 +25,7 @@ if (!$id) {
             <h1>Agenda de Contactos</h1>
        </div>
 
+       <div class="notificacion contenedor" id="notificacion"> </div>
 </div>
 
 <section class="contenedor seccion">
